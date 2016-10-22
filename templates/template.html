@@ -6,12 +6,16 @@
 <body>
 <h1>{{search_term}}</h1>
 {% for entry in sorted_list %}
-<h2>1. {{ entry.name }}</h2>
+<h2>{{ loop.index }}. {{ entry.name }}</h2>
 <h3> Created {{entry.created_at}}</h3>
 <a href="{{entry.owner.url}}"><img src="{{entry.owner.avatar_url}}" alt="avatar" height="42" width="42"/></a>
 {{entry.owner.login}}
 <h3>LastCommit</h3>
-{{entry.sha}} {{entry.commit_message}}  {{entry.commit_author_name}}
+{% if entry.commit_details[0]|length > 1 %}
+<b>sha: </b> {{entry.commit_details[0].sha}}
+<b>Commit Message: </b> {{entry.commit_details[0].commit.message}}
+<b>Author Name: </b> {{entry.commit_details[0].commit.author.name}}
+{% endif %}
 <hr/>
 {% endfor %}
 </body>
