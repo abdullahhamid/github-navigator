@@ -14,7 +14,9 @@ This python web application takes a parameter "search_term" as input and queries
 
 Run the command: 
 `python application.py`
+
 Go to browser and make a GET request e.g. 
 `http://localhost:5000/navigator?search_term=arrow`
+
 To run the tests, run the command: 
 `python application_test.py` 
